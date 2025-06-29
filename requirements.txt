@@ -1,0 +1,17 @@
+# 网易云音乐礼品卡分析器依赖包
+# 作者: Claude 4.0 sonnet
+
+# UI界面
+PyQt6>=6.0.0
+
+# HTTP请求
+requests>=2.25.0
+
+# 加密算法
+pycryptodome>=3.15.0
+
+# 可选：更好的JSON处理
+# ujson>=5.0.0
+
+# 可选：更快的HTTP客户端
+# httpx>=0.24.0
