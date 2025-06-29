@@ -404,5 +404,5 @@ analyzer.filter_and_save(results)
 ---
 
 **开发者**: suimi
-**最后更新**: 2024年
+**最后更新**: 2025年
 **联系方式**: 通过GitHub Issues反馈问题
