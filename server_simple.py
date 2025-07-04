@@ -335,13 +335,15 @@ def analyze_link():
                 'error': '链接不能为空'
             }), 400
         
+        logger.info(f"开始分析链接: {link}")
         result = analyzer.analyze_single_link(link)
+        logger.info(f"分析完成: {result.get('gift_status', 'unknown')}")
         return jsonify(result)
             
     except Exception as e:
-        logger.error(f"分析接口错误: {e}")
+        logger.error(f"分析接口错误: {e}", exc_info=True)
         return jsonify({
-            'error': str(e)
+            'error': f'服务器内部错误: {str(e)}'
         }), 500
 
 @app.route('/api/batch_analyze', methods=['POST'])
