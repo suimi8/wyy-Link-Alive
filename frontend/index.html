@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>网易云音乐礼品卡状态分析器</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen flex flex-col bg-gray-50 text-gray-900">
+  <!-- Navigation Bar -->
+  <header class="bg-white shadow">
+    <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="index.html" class="text-2xl font-bold text-red-500">礼品卡分析器</a>
+      <nav class="space-x-6 text-gray-700 font-medium hidden md:block">
+        <a href="gift-analyzer.html" class="hover:text-red-500">礼品卡分析</a>
+        <a href="vip-analyzer.html" class="hover:text-red-500">VIP 链接分析</a>
+        <a href="results.html" class="hover:text-red-500">分析结果</a>
+        <a href="about.html" class="hover:text-red-500">关于</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="flex-1 bg-cover bg-center" style="background-image: url('https://source.unsplash.com/random/1600x900?music');">
+    <div class="bg-black bg-opacity-60 w-full h-full flex items-center justify-center">
+      <div class="text-center text-white px-4">
+        <h1 class="text-4xl md:text-6xl font-extrabold mb-6 drop-shadow-md">网易云音乐礼品卡 & VIP 链接分析器</h1>
+        <p class="text-lg md:text-2xl mb-8 max-w-2xl mx-auto drop-shadow">
+          轻松批量检测礼品卡状态，高效掌握有效链接，让分析更简单！
+        </p>
+        <a href="gift-analyzer.html" class="inline-block bg-red-500 hover:bg-red-600 text-white font-semibold px-8 py-3 rounded-lg shadow-lg transition">
+          立即开始
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-white shadow-inner">
+    <div class="container mx-auto px-4 py-6 text-center text-sm text-gray-600">
+      © 2025 网易云音乐礼品卡分析器 · 仅供学习研究使用
+    </div>
+  </footer>
+</body>
+</html>

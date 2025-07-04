@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>关于 · 网易云音乐礼品卡分析器</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen flex flex-col bg-gray-100 text-gray-900">
+  <!-- Navigation -->
+  <header class="bg-white shadow">
+    <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="index.html" class="text-2xl font-bold text-red-500">礼品卡分析器</a>
+      <nav class="space-x-6 text-gray-700 font-medium hidden md:block">
+        <a href="gift-analyzer.html" class="hover:text-red-500">礼品卡分析</a>
+        <a href="vip-analyzer.html" class="hover:text-red-500">VIP 链接分析</a>
+        <a href="results.html" class="hover:text-red-500">分析结果</a>
+        <a href="about.html" class="text-red-500 font-semibold">关于</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="bg-cover bg-center" style="background-image: url('https://source.unsplash.com/random/1600x600?concert');">
+    <div class="bg-black bg-opacity-50">
+      <div class="container mx-auto px-4 py-20 text-center text-white">
+        <h1 class="text-4xl md:text-5xl font-extrabold mb-4">关于本项目</h1>
+        <p class="text-lg md:text-2xl max-w-3xl mx-auto">了解项目背景、核心功能与开源协议</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="flex-1 container mx-auto px-4 py-10">
+    <div class="bg-white rounded-lg shadow-md p-6 md:p-10 prose max-w-none">
+      <h2>项目简介</h2>
+      <p>网易云音乐礼品卡、VIP 邀请链接分析器是一个开源项目，致力于帮助用户高效检测礼品卡及 VIP 邀请链接的状态，涵盖礼品卡可领取数量、过期时间以及 VIP 邀请剩余天数等信息。</p>
+      <h2>核心特性</h2>
+      <ul>
+        <li>批量检测礼品卡状态</li>
+        <li>检测 VIP 邀请链接有效期</li>
+        <li>多线程并发，高性能处理</li>
+        <li>实时进度显示与结果统计</li>
+      </ul>
+      <h2>技术栈</h2>
+      <ul>
+        <li>前端：HTML + Tailwind CSS + JavaScript</li>
+        <li>后端：Python, Flask (规划中)</li>
+        <li>Unsplash API：提供高质量背景图片</li>
+      </ul>
+      <h2>开源许可证</h2>
+      <p>本项目遵循 <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener noreferrer">MIT License</a>，仅供学习和研究使用。</p>
+      <h2>作者与致谢</h2>
+      <p>作者: <strong>suimi</strong><br>特别感谢社区贡献者以及 Unsplash 提供的图片资源。</p>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white shadow-inner">
+    <div class="container mx-auto px-4 py-6 text-center text-sm text-gray-600">
+      © 2025 网易云音乐礼品卡分析器 · 仅供学习研究使用
+    </div>
+  </footer>
+</body>
+</html>

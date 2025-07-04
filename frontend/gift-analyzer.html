@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>礼品卡分析 · 网易云音乐</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen flex flex-col bg-gray-100 text-gray-900">
+  <!-- Navigation Bar -->
+  <header class="bg-white shadow">
+    <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="index.html" class="text-2xl font-bold text-red-500">礼品卡分析器</a>
+      <nav class="space-x-6 text-gray-700 font-medium hidden md:block">
+        <a href="gift-analyzer.html" class="text-red-500 font-semibold">礼品卡分析</a>
+        <a href="vip-analyzer.html" class="hover:text-red-500">VIP 链接分析</a>
+        <a href="results.html" class="hover:text-red-500">分析结果</a>
+        <a href="about.html" class="hover:text-red-500">关于</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Header Banner -->
+  <section class="bg-cover bg-center" style="background-image: url('https://source.unsplash.com/random/1600x600?gift');">
+    <div class="bg-black bg-opacity-60">
+      <div class="container mx-auto px-4 py-20 text-center text-white">
+        <h1 class="text-4xl md:text-5xl font-extrabold mb-4">礼品卡批量分析</h1>
+        <p class="text-lg md:text-2xl max-w-3xl mx-auto">上传或粘贴礼品卡链接，一键检测状态，实时掌握可领取信息</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Form Section -->
+  <main class="flex-1 container mx-auto px-4 py-10">
+    <div class="bg-white rounded-lg shadow-md p-6 md:p-10">
+      <h2 class="text-2xl font-semibold mb-6">配置分析参数</h2>
+      <form id="giftForm" class="space-y-6">
+        <!-- File uploader -->
+        <div>
+          <label class="block mb-2 font-medium">批量上传链接文件 (.txt)</label>
+          <input type="file" accept=".txt" class="w-full border border-gray-300 rounded-lg p-3" />
+        </div>
+
+        <!-- Textarea -->
+        <div>
+          <label class="block mb-2 font-medium">或粘贴链接（每行一个）</label>
+          <textarea rows="6" class="w-full border border-gray-300 rounded-lg p-3" placeholder="http://163cn.tv/xxxxxx"></textarea>
+        </div>
+
+        <!-- Thread count -->
+        <div>
+          <label class="block mb-2 font-medium">线程数: <span id="threadCountValue" class="font-bold">10</span></label>
+          <input id="threadCount" type="range" min="1" max="20" value="10" class="w-full">
+        </div>
+
+        <!-- Actions -->
+        <div class="flex flex-wrap gap-4">
+          <button type="submit" class="flex-1 bg-red-500 hover:bg-red-600 text-white font-semibold py-3 rounded-lg transition">🚀 开始分析</button>
+          <button type="button" class="flex-1 bg-gray-500 hover:bg-gray-600 text-white py-3 rounded-lg transition">⏸ 暂停</button>
+          <button type="button" class="flex-1 bg-gray-700 hover:bg-gray-800 text-white py-3 rounded-lg transition">🛑 停止</button>
+        </div>
+      </form>
+
+      <!-- Progress Bar -->
+      <div class="mt-8">
+        <label class="block mb-2 font-medium">进度</label>
+        <div class="w-full bg-gray-200 rounded-full h-4">
+          <div id="progressBar" class="bg-red-500 h-4 rounded-full" style="width: 0%;"></div>
+        </div>
+        <p id="progressText" class="mt-2 text-sm text-gray-600">等待分析...</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white shadow-inner">
+    <div class="container mx-auto px-4 py-6 text-center text-sm text-gray-600">
+      © 2025 网易云音乐礼品卡分析器 · 仅供学习研究使用
+    </div>
+  </footer>
+
+  <script>
+    // 更新线程数显示
+    const threadRange = document.getElementById('threadCount');
+    const threadValue = document.getElementById('threadCountValue');
+    threadRange.addEventListener('input', () => {
+      threadValue.textContent = threadRange.value;
+    });
+
+    // 占位：表单提交逻辑
+    document.getElementById('giftForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      // TODO: 调用后端 API 进行分析
+      const progressBar = document.getElementById('progressBar');
+      const progressText = document.getElementById('progressText');
+      progressBar.style.width = '33%';
+      progressText.textContent = '分析进行中... (示例)';
+    });
+  </script>
+</body>
+</html>

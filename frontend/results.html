@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>分析结果 · 网易云音乐</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen flex flex-col bg-gray-100 text-gray-900">
+  <!-- Navigation -->
+  <header class="bg-white shadow">
+    <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="index.html" class="text-2xl font-bold text-red-500">礼品卡分析器</a>
+      <nav class="space-x-6 text-gray-700 font-medium hidden md:block">
+        <a href="gift-analyzer.html" class="hover:text-red-500">礼品卡分析</a>
+        <a href="vip-analyzer.html" class="hover:text-red-500">VIP 链接分析</a>
+        <a href="results.html" class="text-red-500 font-semibold">分析结果</a>
+        <a href="about.html" class="hover:text-red-500">关于</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Content -->
+  <main class="flex-1 container mx-auto px-4 py-10">
+    <h1 class="text-3xl font-bold mb-6">分析结果</h1>
+
+    <!-- Tabs -->
+    <div class="mb-6">
+      <button data-tab="gift" class="tab-btn active mr-4 bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded">礼品卡</button>
+      <button data-tab="vip" class="tab-btn bg-gray-200 hover:bg-gray-300 text-gray-700 px-4 py-2 rounded">VIP 链接</button>
+    </div>
+
+    <!-- Gift Table -->
+    <div id="gift" class="tab-pane">
+      <div class="overflow-x-auto bg-white rounded-lg shadow-md">
+        <table class="min-w-full text-left border-collapse">
+          <thead class="bg-gray-100">
+            <tr>
+              <th class="px-6 py-3 border-b">链接</th>
+              <th class="px-6 py-3 border-b">状态</th>
+              <th class="px-6 py-3 border-b">可领取数</th>
+              <th class="px-6 py-3 border-b">过期时间</th>
+            </tr>
+          </thead>
+          <tbody id="giftResults">
+            <!-- 动态插入行 -->
+            <tr>
+              <td class="px-6 py-4 border-b">http://163cn.tv/xxxxxx</td>
+              <td class="px-6 py-4 border-b text-green-600">可领取</td>
+              <td class="px-6 py-4 border-b">3/5</td>
+              <td class="px-6 py-4 border-b">2025-12-31</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- VIP Table -->
+    <div id="vip" class="tab-pane hidden">
+      <div class="overflow-x-auto bg-white rounded-lg shadow-md">
+        <table class="min-w-full text-left border-collapse">
+          <thead class="bg-gray-100">
+            <tr>
+              <th class="px-6 py-3 border-b">链接</th>
+              <th class="px-6 py-3 border-b">状态</th>
+              <th class="px-6 py-3 border-b">剩余天数</th>
+              <th class="px-6 py-3 border-b">过期时间</th>
+            </tr>
+          </thead>
+          <tbody id="vipResults">
+            <tr>
+              <td class="px-6 py-4 border-b">https://vip.163.com/invite/xxxx</td>
+              <td class="px-6 py-4 border-b text-green-600">有效</td>
+              <td class="px-6 py-4 border-b">25.3</td>
+              <td class="px-6 py-4 border-b">2025-12-31</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white shadow-inner">
+    <div class="container mx-auto px-4 py-6 text-center text-sm text-gray-600">
+      © 2025 网易云音乐礼品卡分析器 · 仅供学习研究使用
+    </div>
+  </footer>
+
+  <script>
+    // Tab switch logic
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const panes = document.querySelectorAll('.tab-pane');
+
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = btn.getAttribute('data-tab');
+
+        // Update buttons
+        tabButtons.forEach(b => b.classList.remove('bg-red-500', 'text-white', 'active'));
+        btn.classList.add('bg-red-500', 'text-white', 'active');
+
+        // Update panes
+        panes.forEach(p => {
+          p.id === target ? p.classList.remove('hidden') : p.classList.add('hidden');
+        });
+      });
+    });
+  </script>
+</body>
+</html>
