@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网易云音乐礼品卡分析器</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="min-h-screen gradient-bg" x-data="appState()">
+    <!-- Navigation -->
+    <nav class="glass-effect sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <i class="fas fa-music text-2xl text-white"></i>
+                    <h1 class="text-xl font-semibold text-white">网易云礼品分析器</h1>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <button @click="setActivePage('dashboard')" 
+                            :class="activePage === 'dashboard' ? 'text-yellow-300' : 'text-white hover:text-yellow-300'"
+                            class="transition-colors duration-200">
+                        <i class="fas fa-chart-dashboard mr-2"></i>仪表板
+                    </button>
+                    <button @click="setActivePage('analyzer')" 
+                            :class="activePage === 'analyzer' ? 'text-yellow-300' : 'text-white hover:text-yellow-300'"
+                            class="transition-colors duration-200">
+                        <i class="fas fa-search mr-2"></i>分析器
+                    </button>
+                    <button @click="setActivePage('results')" 
+                            :class="activePage === 'results' ? 'text-yellow-300' : 'text-white hover:text-yellow-300'"
+                            class="transition-colors duration-200">
+                        <i class="fas fa-chart-bar mr-2"></i>结果
+                    </button>
+                    <button @click="setActivePage('settings')" 
+                            :class="activePage === 'settings' ? 'text-yellow-300' : 'text-white hover:text-yellow-300'"
+                            class="transition-colors duration-200">
+                        <i class="fas fa-cog mr-2"></i>设置
+                    </button>
+                </div>
+                <div class="md:hidden">
+                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-white">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div x-show="mobileMenuOpen" x-transition class="md:hidden glass-effect">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <button @click="setActivePage('dashboard'); mobileMenuOpen = false" 
+                        class="block w-full text-left px-3 py-2 text-white hover:text-yellow-300">
+                    <i class="fas fa-chart-dashboard mr-2"></i>仪表板
+                </button>
+                <button @click="setActivePage('analyzer'); mobileMenuOpen = false" 
+                        class="block w-full text-left px-3 py-2 text-white hover:text-yellow-300">
+                    <i class="fas fa-search mr-2"></i>分析器
+                </button>
+                <button @click="setActivePage('results'); mobileMenuOpen = false" 
+                        class="block w-full text-left px-3 py-2 text-white hover:text-yellow-300">
+                    <i class="fas fa-chart-bar mr-2"></i>结果
+                </button>
+                <button @click="setActivePage('settings'); mobileMenuOpen = false" 
+                        class="block w-full text-left px-3 py-2 text-white hover:text-yellow-300">
+                    <i class="fas fa-cog mr-2"></i>设置
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Dashboard Page -->
+        <div x-show="activePage === 'dashboard'" x-transition:enter="transition ease-out duration-300">
+            <div id="dashboard-content"></div>
+        </div>
+        
+        <!-- Analyzer Page -->
+        <div x-show="activePage === 'analyzer'" x-transition:enter="transition ease-out duration-300">
+            <div id="analyzer-content"></div>
+        </div>
+        
+        <!-- Results Page -->
+        <div x-show="activePage === 'results'" x-transition:enter="transition ease-out duration-300">
+            <div id="results-content"></div>
+        </div>
+        
+        <!-- Settings Page -->
+        <div x-show="activePage === 'settings'" x-transition:enter="transition ease-out duration-300">
+            <div id="settings-content"></div>
+        </div>
+    </main>
+
+    <!-- Toast Notifications -->
+    <div id="toast-container" class="fixed bottom-4 right-4 z-50 space-y-2"></div>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+    <script src="js/components/dashboard.js"></script>
+    <script src="js/components/analyzer.js"></script>
+    <script src="js/components/results.js"></script>
+    <script src="js/components/settings.js"></script>
+</body>
+</html>
